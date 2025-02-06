@@ -1,16 +1,19 @@
 # Composant
 
-## Cours
-
-Un **composant** en React est une fonction (ou une classe) qui retourne du JSX pour afficher une partie de l'interface utilisateur.
+Une **fonction composant** en React est une fonction JavaScript (ou TypeScript) qui retourne du **JSX** pour afficher une partie de l'interface utilisateur. Elle permet de structurer et réutiliser du code facilement.  
 
 ---
 
-## 1️. **Composant**
+### **Synthèse d'une fonction composant :**  
 
-Un **composant** est une simple fonction qui à la fin retourne du JSX.
+- C'est une **fonction** qui retourne du **JSX**.  
+- Elle peut recevoir des **props** (_properties_) pour être dynamique.  
+- Elle s’écrit en **PascalCase** (`NomDuComposant`).  
+- Elle peut être **imbriquée** dans d’autres composants.  
 
-### Exemple :
+---
+
+### **Exemple d'une fonction composant :**  
 
 ```tsx
 function HelloWorld() {
@@ -18,78 +21,41 @@ function HelloWorld() {
 }
 ```
 
-👉 Ce composant affiche simplement un message sans interaction ni mise à jour.
+👉 Affiche un message statique.  
 
 ---
 
-## 2️. **Composant avec des propriétés (props)**
-
-Les **props** (_properties_) permettent de passer des données à un composant pour le rendre réutilisable et dynamique.
-
-### Exemple :
+### **Exemple avec des `props` :**  
 
 ```tsx
 interface GreetingProps {
   name: string;
 }
 
-function Greeting(props: GreetingProps) {
-  return <h1>Salut, {props.name} !</h1>;
+function Greeting({ name }: GreetingProps) {
+  return <h1>Salut, {name} !</h1>;
 }
 ```
 
-### Utilisation :
-
-```tsx
-<Greeting name="Alice" />
-<Greeting name="Bob" />
-```
-
-👉 Ici, `name` est une prop qui permet d'afficher un message personnalisé.
+👉 `name` est une prop qui rend le composant dynamique.  
 
 ---
 
-## 3️. **Imbrication des composants**
-
-Les composants peuvent être imbriqués pour structurer l'interface utilisateur.
-
-### Exemple :
+### **Exemple d'imbrication de composants :**  
 
 ```tsx
 function Header() {
   return <h1>Mon Site</h1>;
 }
 
-function Main() {
-  return <p>Bienvenue sur mon site !</p>;
-}
-
 function App() {
   return (
     <div>
       <Header />
-      <Main />
+      <p>Bienvenue sur mon site !</p>
     </div>
   );
 }
 ```
 
-👉 `App` est un composant qui **inclut** `Header` et `Main`, structurant ainsi l'affichage.
-
---
-
-## Exercice
-
-Créé un fichier `PokemonItem.tsx` au même niveau que `App.tsx` et construit un **Composant** permettant d'afficher le HTML suivant :
-
-```tsx
-<div class="item">
-  #1 pokemon
-  <img
-    class="icon"
-    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-  />
-</div>
-```
-
-Le numéro #`1`, le nom `pokemon` et l'URL de l'image doivent être paramétrable avec les propriétés respectives : `id`, `label` et `url`.
+👉 `App` inclut `Header`, structurant ainsi l'interface. 🚀
